@@ -4,7 +4,7 @@ from models import build_model
 from kokoro import generate
 from IPython.display import Audio, display
 import numpy as np
-
+import gradio as gr
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f'loaded device: {device}')

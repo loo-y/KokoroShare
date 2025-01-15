@@ -4,7 +4,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Install git and git-lfs
-RUN apt-get update && apt-get install -y git git-lfs
+RUN apt-get update && apt-get install -y git git-lfs vim
 
 # Install espeak-ng
 RUN apt-get -qq -y install espeak-ng > /dev/null 2>&1
