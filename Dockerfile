@@ -1,4 +1,4 @@
-FROM python:3.12-slim 
+FROM python:3.12-slim
 
 # Set working directory
 WORKDIR /app
@@ -20,7 +20,7 @@ WORKDIR /app/Kokoro-82M
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -v --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
 COPY . .

@@ -2,7 +2,7 @@
 
 ### Docker Image Build
 ```bash
-docker build --progress=plain -t kokoroshare .
+docker build -t kokoroshare .
 ```
 
 ### Docker Run
