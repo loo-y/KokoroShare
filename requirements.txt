@@ -1,6 +1,7 @@
 torch
 transformers
 scipy
+IPython
 munch
 numpy
 gradio
