@@ -29,6 +29,10 @@ docker run --gpus=all -dp 7860:7860 --name kokoroTTS kokoroshare
 docker exec -it kokoroTTS /bin/bash
 ```
 
+#### 4. 访问 Web UI
+在浏览器中访问 http://localhost:7860
+
+
 
 ### 方式二：Google Colab
 如果您希望快速体验，或者没有本地环境，可以使用 Google Colab：
