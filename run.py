@@ -12,9 +12,9 @@ MODEL = build_model('kokoro-v0_19.pth', device)
 
 VOICE_NAMES = [
     'af',  # Default voice is a 50-50 mix of Bella & Sarah
+    'af_nicole', 'af_sky',
     'af_bella', 'af_sarah', 'am_adam', 'am_michael',
     'bf_emma', 'bf_isabella', 'bm_george', 'bm_lewis',
-    'af_nicole', 'af_sky',
 ]
 VOICEPACKS = {name: torch.load(f'voices/{name}.pt', weights_only=True).to(device) for name in VOICE_NAMES}
 
@@ -49,13 +49,22 @@ with gr.Blocks() as demo:
     with gr.Column():
       text_input = gr.Textbox(label="Enter text to synthesize:", lines=5, placeholder="Enter text here...")
       voice_dropdown = gr.Dropdown(choices=VOICE_NAMES, label="Select Voice", value=VOICE_NAMES[0])
-      generate_button = gr.Button("Generate Audio")
+      generate_button = gr.Button(interactive=True, value="Generate Audio", variant="primary")
       error_output = gr.Textbox(label="Error Message", interactive=False)
     with gr.Column():
       audio_output = gr.Audio(label="Generated Audio", interactive=False)
       phoneme_output = gr.Textbox(label="Phonemes", interactive=False)
 
+  def update_button_state():
+      return gr.Button(interactive=False, value="Generating...", variant="secondary")
+
+  def reset_button_state():
+      return gr.Button(interactive=True, value="Generate Audio", variant="primary")
+
   generate_button.click(
+      update_button_state,
+      outputs=generate_button,
+  ).then(
       generate_audio,
       inputs=[text_input, voice_dropdown],
       outputs=[audio_output, phoneme_output, error_output],
@@ -63,6 +72,9 @@ with gr.Blocks() as demo:
       display_audio,
       inputs=audio_output,
       outputs=audio_output
+  ).then(
+      reset_button_state,
+      outputs=generate_button
   )
 
 # --- Launch the Web UI ---
