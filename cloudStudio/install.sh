@@ -78,7 +78,7 @@ echo "espeak-ng 安装完成."
 # 克隆仓库
 echo "正在克隆 Kokoro-82M 仓库..."
 git lfs install
-git clone https://hf-mirror.com/hexgrad/Kokoro-82M
+git clone https://hf-mirror.com/hexgrad/Kokoro-82M Kokoro-82M
 echo "Kokoro-82M 仓库克隆完成."
 
 # 进入仓库目录
@@ -131,5 +131,10 @@ fi
 echo "正在复制启动代码..."
 cp -r ../../run.py .
 echo "启动代码复制完成."
+
+# 修改 run.py 中的启动代码
+echo "正在修改启动代码，支持公网分享..."
+sed -i 's/demo.launch(share=False/demo.launch(share=True/g' run.py
+echo "启动代码修改完成."
 
 echo "安装完成！请进入 Kokoro-82M 目录并执行 python run.py 来运行应用程序。"

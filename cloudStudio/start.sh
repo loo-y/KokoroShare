@@ -10,4 +10,4 @@ python run.py
 # python run.py > app.log 2>&1 &  # 后台运行并输出日志到 app.log
 
 # 可选：在启动完成后输出提示信息
-echo "应用程序已启动！"
+# echo "应用程序已启动！"
