@@ -17,13 +17,13 @@ RUN git clone https://huggingface.co/hexgrad/Kokoro-82M
 WORKDIR /app/Kokoro-82M
 
 # Copy requirements file
-COPY requirements.txt .
+COPY ../requirements.txt .
 
 # Install Python dependencies
 RUN pip install -v --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
-COPY . .
+COPY ../run.py .
 
 # Expose port for Gradio
 EXPOSE 7860
