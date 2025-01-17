@@ -32,14 +32,41 @@ docker exec -it kokoroTTS /bin/bash
 #### 4. 访问 Web UI
 在浏览器中访问 http://localhost:7860
 
+<br />
 
+### 方式二: 腾讯Cloud Studio
+腾讯 [Cloud Studio](https://ide.cloud.tencent.com/) 提供高性能云计算环境，目前每个月有10000分钟的免费使用时长。
 
-### 方式二：Google Colab
+* 访问 [Cloud Studio](https://ide.cloud.tencent.com/)
+* 选择并创建高性能工作空间，模版选择 Pytorch2.0.0
+* 进入工作空间，打开 Terminal
+* 克隆当前仓库
+    ```bash
+    git clone https://github.com/loo-y/KokoroShare
+    ```
+* 进入 Cloud Studio 目录
+    ```bash
+    cd KokoroShare/cloudStudio
+    ```
+* 执行 make 命令，自动完成环境配置以及安装依赖
+    ```bash
+    make install
+    ```
+* 待安装完毕，执行启动
+    ```bash
+    ./install.sh
+    ```
+* 获取 Gradio 提供的分享 Url，即可开始使用
+
+<br />
+
+### 方式三：Google Colab
 如果您希望快速体验，或者没有本地环境，可以使用 Google Colab：
 * 访问 [Google Colab](https://colab.research.google.com/)
 * 点击"文件" - "上传Notebook"
-* 选择项目中的 ```KokoroShare.ipynb``` 进行上传
+* 选择项目中的 ```colab/KokoroShare.ipynb``` 进行上传
 * 运行 Notebook 中的代码块
 * 当 Gradio 应用启动后，您将获得一个公共链接，用于访问 Web UI。
 
     <img src="https://github.com/user-attachments/assets/8f3dc7ee-4651-44db-8b8c-3a5a8f2bf839" width=400 />
+

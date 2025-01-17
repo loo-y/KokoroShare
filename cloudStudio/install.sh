@@ -86,7 +86,7 @@ cd Kokoro-82M
 
 # 复制 requirements.txt
 echo "正在复制 requirements.txt..."
-cp ../requirements.txt .
+cp ../../requirements.txt .
 echo "requirements.txt 复制完成."
 
 # 安装 Python 依赖
@@ -119,9 +119,17 @@ fi
 
 echo "frpc 下载完成并放置正确位置."
 
+# 添加执行权限
+echo "正在添加 frpc 执行权限..."
+chmod +x "$GRADIO_PATH/frpc_linux_amd64_v0.3"
+if [ $? -ne 0 ]; then
+    echo "Failed to add execution permission for frpc. Please check your permission."
+    exit 1
+fi
+
 # 复制其他应用代码（假设当前脚本在项目根目录下）
 echo "正在复制启动代码..."
-cp -r ../run.py .
+cp -r ../../run.py .
 echo "启动代码复制完成."
 
 echo "安装完成！请进入 Kokoro-82M 目录并执行 python run.py 来运行应用程序。"
