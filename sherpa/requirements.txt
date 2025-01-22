@@ -1,0 +1,5 @@
+onnxruntime
+setuptools
+gradio
+sounddevice
+numpy
