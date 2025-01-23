@@ -127,15 +127,21 @@ MODEL_URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sh
 MODEL_DIR="sherpa-onnx-streaming-zipformer-model"
 
 # 创建目录并下载模型
-mkdir -p "${MODEL_DIR}" && \
 wget "${MODEL_URL}" -O model.tar.bz2 && \
 tar -xvf model.tar.bz2 -C ./ && \
 rm model.tar.bz2
 
 # 重命名解压后的目录
-mv sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/ "${MODEL_DIR}/"
+mv sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 "${MODEL_DIR}"
 
 echo "模型已成功安装到目录: ${MODEL_DIR}"
+
+echo "开始构建sherpa_onnx"
+# 设置 CMake 参数以启用 GPU 支持
+export SHERPA_ONNX_CMAKE_ARGS="-DSHERPA_ONNX_ENABLE_GPU=ON"
+python3 setup.py install
+echo "构建sherpa_onnx完成"
+
 
 # 复制其他应用代码（假设当前脚本在项目根目录下）
 echo "正在复制启动代码..."

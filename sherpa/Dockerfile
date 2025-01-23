@@ -39,11 +39,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download and extract the model
 ARG MODEL_URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20.tar.bz2"
 ARG MODEL_DIR="sherpa-onnx-streaming-zipformer-model"
-RUN mkdir -p ${MODEL_DIR} && \
-    wget ${MODEL_URL} -O model.tar.bz2 && \
+RUN wget ${MODEL_URL} -O model.tar.bz2 && \
     tar -xvf model.tar.bz2 -C ./ && \
     rm model.tar.bz2
-RUN mv sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20/ ${MODEL_DIR}/
+RUN mv sherpa-onnx-streaming-zipformer-bilingual-zh-en-2023-02-20 ${MODEL_DIR}
+
+
+RUN export SHERPA_ONNX_CMAKE_ARGS="-DSHERPA_ONNX_ENABLE_GPU=ON" 
 
 RUN python3 setup.py install
 

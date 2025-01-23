@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 切换到脚本所在的目录，防止相对路径问题
-cd "$(dirname "$0")sherpa-onnx"
+cd "$(dirname "$0")/sherpa-onnx"
 
 # 启动应用程序
 python streamingaudio.py
