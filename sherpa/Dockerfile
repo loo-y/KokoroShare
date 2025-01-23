@@ -1,5 +1,4 @@
-# FROM hub.cloud.ctripcorp.com/library/ubuntu:24.04
-FROM hub.cloud.ctripcorp.com/library/python:3.12-slim
+FROM python:3.12-slim
 
 # 设置非交互式环境（避免安装过程中询问时区等问题）
 # export DEBIAN_FRONTEND=noninteractive
